@@ -18,6 +18,10 @@ def init():
 	model = joblib.load('RFR_14_10_2018.pkl') 
 	app.run(host = '0.0.0.0',threaded=True)
 
+@app.route("/", methods=["GET"])
+def healthcheck():
+	return sendResponse({"health": "ok"})
+
 # API for prediction
 @app.route("/predict", methods=["GET"])
 def predict():
