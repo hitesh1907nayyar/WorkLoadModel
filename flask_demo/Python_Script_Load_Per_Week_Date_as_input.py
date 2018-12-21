@@ -18,11 +18,9 @@ def init():
 	model = joblib.load('RFR_14_10_2018.pkl') 
 	app.run(host = '0.0.0.0',threaded=True)
 
-@app.route('/')
-async def home(request):
-  return web.json_response({'status':'ok'})
-
-
+@app.route("/", methods=["GET"])
+def healthcheck():
+    return sendResponse({"status": "ok"})
 
 # API for prediction
 @app.route("/predict", methods=["GET"])
