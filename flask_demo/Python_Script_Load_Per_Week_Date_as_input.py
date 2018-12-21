@@ -18,7 +18,7 @@ def init():
 	model = joblib.load('RFR_14_10_2018.pkl') 
 	app.run(host = '0.0.0.0',threaded=True)
 
-@routes.get('/')
+@app.get('/')
 async def home(request):
   return web.json_response({'status':'ok'})
 
